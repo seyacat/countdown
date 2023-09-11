@@ -9,4 +9,10 @@ you can pass any css style to container div as parameter
 
 examples:
 
-http://127.0.0.1:8080/?color=white&font-size=100&font-family=Georgia&background-color=black&date=2023-09-11%2012:00&border-radius=20px
+FIVE MINUTES:
+https://seyacat.github.io/countdown/?color=white&font-size=100&font-family=Georgia&background-color=black&border-radius=20px&seconds=300
+
+NEW YEAR 2024
+https://seyacat.github.io/countdown/?color=white&font-size=100&font-family=Georgia&background-color=black&border-radius=20px&timestamp=1704085200000
+
+https://seyacat.github.io/countdown/?color=white&font-size=100&font-family=Georgia&background-color=black&border-radius=20px&date=2024-01-01%2000:00

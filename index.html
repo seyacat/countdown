@@ -48,6 +48,7 @@
       countdown.style.backgroundColor = params.get("background-color");*/
 
     setInterval(() => {
+      if (seconds == 0) return;
       s = addLeadingZeros(seconds % 60, 2);
       m = addLeadingZeros(Math.floor(seconds / 60) % 60, 2);
       h = addLeadingZeros(Math.floor(seconds / 3600), 2);
