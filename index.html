@@ -39,16 +39,8 @@
       countdown.style[key] = params.get(key);
     }
 
-    /*if (params.get("color")) countdown.style.color = params.get("color");
-    if (params.get("font-size"))
-      countdown.style.fontSize = params.get("font-size");
-    if (params.get("font-family"))
-      countdown.style.fontFamily = params.get("font-family");
-    if (params.get("background-color"))
-      countdown.style.backgroundColor = params.get("background-color");*/
-
     setInterval(() => {
-      if (seconds == 0) return;
+      if (seconds < 0) return;
       s = addLeadingZeros(seconds % 60, 2);
       m = addLeadingZeros(Math.floor(seconds / 60) % 60, 2);
       h = addLeadingZeros(Math.floor(seconds / 3600), 2);
