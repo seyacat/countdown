@@ -1,0 +1,60 @@
+<html>
+  <head> </head>
+  <style>
+    #cronometer {
+      text-align: center;
+    }
+  </style>
+  <body>
+    <div id="cronometer">0:0:0</div>
+  </body>
+  <script>
+    const cronometer = document.getElementById("cronometer");
+    const url = window.location.href;
+
+    // Obtener los parámetros de la URL
+    const params = new URLSearchParams(window.location.search);
+    let seconds = 0;
+    // Obtener un parámetro específico
+    if (params.get("seconds")) seconds = parseInt(params.get("seconds"));
+    // quiero los segundos entre una fecha y ahora
+
+    if (params.get("timestamp")) {
+      const date = new Date(parseInt(params.get("timestamp")));
+      const now = new Date();
+
+      seconds = Math.floor((now - date) / 1000);
+    }
+
+    if (params.get("date")) {
+      const date = new Date(Date.parse(params.get("date")));
+      const now = new Date();
+      const offset = now.getTimezoneOffset();
+      console.log({ date, now, offset });
+      console.log({ date, now });
+      seconds = Math.floor((now - date + offset * 60 * 1000) / 1000);
+    }
+
+    for (const [key, value] of params) {
+      cronometer.style[key] = params.get(key);
+    }
+
+    setInterval(() => {
+      if (seconds < 0) return;
+      s = addLeadingZeros(seconds % 60, 2);
+      m = addLeadingZeros(Math.floor(seconds / 60) % 60, 2);
+      h = addLeadingZeros(Math.floor(seconds / 3600), 2);
+
+      cronometer.innerHTML = `${h}:${m}:${s}`;
+
+      seconds++;
+    }, 1000);
+
+    const addLeadingZeros = (num, places) => String(num).padStart(places, "0");
+
+    const snakeToCamel = (str) =>
+      str.replace(/([-_][a-z])/gi, ($1) =>
+        $1.toUpperCase().replace("-", "").replace("_", "")
+      );
+  </script>
+</html>
